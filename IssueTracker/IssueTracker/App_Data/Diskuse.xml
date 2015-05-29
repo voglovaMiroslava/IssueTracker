@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<vsechny_diskuse>
+  <diskuse idpozadavku="1">
+    <zaznam poradi="1">
+      <diskuter></diskuter>
+      <obsah></obsah>
+    </zaznam>
+  </diskuse>
+</vsechny_diskuse>

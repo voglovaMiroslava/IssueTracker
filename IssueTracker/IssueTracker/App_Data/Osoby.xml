@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<seznam_osob>
+  <zakaznici>
+    <!--Jedinecne cid pro kazdeho zakaznika-->
+    <zakaznik cid="1">
+      <jmeno> </jmeno>
+      <email> </email>
+    </zakaznik>
+  </zakaznici>
+  <zamestnanci>
+    <!--Jedinecne eid pro kazdeho zamestnance-->
+    <zamestnanec eid="1">
+      <jmeno> </jmeno>
+      <email> </email>
+    </zamestnanec>
+  </zamestnanci>
+</seznam_osob>
