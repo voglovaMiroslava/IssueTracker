@@ -1,17 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<seznam_osob>
-  <zakaznici>
-    <!--Jedinecne cid pro kazdeho zakaznika-->
-    <zakaznik cid="1">
-      <jmeno> </jmeno>
-      <email> </email>
-    </zakaznik>
-  </zakaznici>
-  <zamestnanci>
-    <!--Jedinecne eid pro kazdeho zamestnance-->
-    <zamestnanec eid="1">
-      <jmeno> </jmeno>
-      <email> </email>
-    </zamestnanec>
-  </zamestnanci>
-</seznam_osob>
+<seznamosob xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="C:\Users\Jemmina\Desktop\C#_IssueTracker\trunk\IssueTracker\IssueTracker\App_Data\OsobySchema.xsd">
+  <!--Zakaznici i zamestnanci povinny element. Ale oba mohou byt prazdny-->
+
+  <!--Jedinecne name pro kazdou osobu, statut povinny(jen zakaznik/zamestnanec)-->
+  <osoba name="tousekDominik" statut="zakaznik">
+    <!--Musi byt jak email tak password-->
+    <email>absolut@briliant</email>
+    <password>myLove</password>
+  </osoba>
+  <osoba name="voglovaMirka" statut="zamestnanec">
+    <email>noChance@here</email>
+    <password>notSoSmart</password>
+  </osoba>
+
+</seznamosob>
