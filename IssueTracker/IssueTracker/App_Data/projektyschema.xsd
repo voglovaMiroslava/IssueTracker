@@ -1,9 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="XMLSchema1"
-    targetNamespace="http://tempuri.org/XMLSchema1.xsd"
-    elementFormDefault="qualified"
-    xmlns="http://tempuri.org/XMLSchema1.xsd"
-    xmlns:mstns="http://tempuri.org/XMLSchema1.xsd"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema"
->
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+  <xs:element name="projekty">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="projekt">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nazev-projektu" type="xs:string"/>
+              <xs:element name="pozadavky" type="pozadavky-type"/>
+            </xs:sequence>
+            <xs:attribute name="zakaznik" use="required" type="xs:string"/>
+            <xs:attribute name="pid" use="required" type="xs:decimal"/>
+          </xs:complexType>
+          <xs:unique name="pozadavekId">
+            <xs:selector xpath="pozadavky/pozadavek"/>
+            <xs:field xpath="@pozadavekid"/>
+          </xs:unique>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="pozadavky-type">
+    <xs:sequence>
+      <xs:element name="pozadavek"/>
+    </xs:sequence>
+  </xs:complexType>
+  
 </xs:schema>

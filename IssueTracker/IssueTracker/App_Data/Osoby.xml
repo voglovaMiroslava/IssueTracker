@@ -3,12 +3,12 @@
   <!--Zakaznici i zamestnanci povinny element. Ale oba mohou byt prazdny-->
 
   <!--Jedinecne name pro kazdou osobu, statut povinny(jen zakaznik/zamestnanec)-->
-  <osoba name="tousekDominik" statut="zakaznik">
+  <osoba name="tousekDominik" statut="zakaznik" zasilat="ano">
     <!--Musi byt jak email tak password-->
     <email>absolut@briliant</email>
     <password>myLove</password>
   </osoba>
-  <osoba name="voglovaMirka" statut="zamestnanec">
+  <osoba name="voglovaMirka" statut="zamestnanec" zasilat="ne">
     <email>noChance@here</email>
     <password>notSoSmart</password>
   </osoba>

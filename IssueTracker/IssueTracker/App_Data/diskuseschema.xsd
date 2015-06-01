@@ -1,9 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="DiskuseSchema"
-    targetNamespace="http://tempuri.org/DiskuseSchema.xsd"
-    elementFormDefault="qualified"
-    xmlns="http://tempuri.org/DiskuseSchema.xsd"
-    xmlns:mstns="http://tempuri.org/DiskuseSchema.xsd"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema"
->
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+  
+  <xs:element name="vsechnydiskuse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="diskuse" type="diskuse-type" maxOccurs="unbounded" minOccurs="0">
+          <xs:unique name="uniq-poradi">
+            <xs:selector xpath="zaznam"/>
+            <xs:field xpath="@poradi"/>
+          </xs:unique>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+    <xs:unique name="uniq-idpozadavku">
+      <xs:selector xpath="diskuse"/>
+      <xs:field xpath="@idpozadavku"/>
+    </xs:unique>
+  </xs:element>
+
+  <xs:complexType name="diskuse-type">
+    <xs:sequence>
+      <xs:element name="zaznam" maxOccurs="unbounded" minOccurs="0" type="zaznam-type"/>
+    </xs:sequence>
+    <xs:attribute name="idpozadavku" use="required" type="xs:integer"/>
+  </xs:complexType>
+
+  <xs:complexType name="zaznam-type">
+    <xs:sequence>
+      <xs:element name="diskuter" type="xs:string" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="obsah" type="xs:string" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="datum" type="xs:dateTime" maxOccurs="1" minOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="poradi" use="required" type="xs:integer"/>
+  </xs:complexType>
+
+  <xs:simpleType name="datum-type">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{4}-[0-1][0-9]-[0-3][0-9]"/>
+    </xs:restriction>
+  </xs:simpleType>
 </xs:schema>

@@ -1,18 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <projekty>
-  <projekt zakaznik ="id_zakaznika" pid="1">
-    <nazev_projektu></nazev_projektu>
+  <!--pid id projektu-->
+  <projekt zakaznik ="jmeno-zakaznika" pid="1">
+    <nazev-projektu>Nazev</nazev-projektu>
     <pozadavky>
       <!--Evidovat typ chyba/pozadavek-->
       <!--Evidovat stav novy/resi se/vyreseno/zamitnuto-->
       <!--iid unikatni i pres vsechny projekty-->
-      <pozadavek iid="1" typ="chyba" stav="resi_se">
+      <pozadavek pozadavekid="1" typ="chyba" stav="resi_se">
         <zadavatel></zadavatel>
-        <nazev_pozadavku></nazev_pozadavku>
-        <obsah_pozadavku></obsah_pozadavku>
-        <id_resitele></id_resitele>
-        <datum_zadani></datum_zadani>
-        <datum_ukonceni></datum_ukonceni>
+        <nazev-pozadavku></nazev-pozadavku>
+        <obsah-pozadavku></obsah-pozadavku>
+        <id-resitele></id-resitele>
+        <datum-zadani></datum-zadani>
+        <datum-ukonceni></datum-ukonceni>
       </pozadavek>
     </pozadavky>
     

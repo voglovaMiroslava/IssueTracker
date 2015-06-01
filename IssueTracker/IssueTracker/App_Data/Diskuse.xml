@@ -1,9 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<vsechny_diskuse>
+<vsechnydiskuse>
   <diskuse idpozadavku="1">
     <zaznam poradi="1">
-      <diskuter></diskuter>
-      <obsah></obsah>
+      <diskuter>xtousek</diskuter>
+      <obsah>Tenhle issueTracker je uplne na hovno!</obsah>
+      <!--YYYY-MM-DDThh:mm:ss-->
+      <datum>2015-05-30T09:30:00</datum>
+    </zaznam>
+      <zaznam poradi="2">
+      <diskuter>xvoglova</diskuter>
+      <obsah>Ja vim...</obsah>
+      <!--YYYY-MM-DDThh:mm:ss-->
+      <datum>2015-05-30T10:30:00</datum>
     </zaznam>
   </diskuse>
-</vsechny_diskuse>
+</vsechnydiskuse>
