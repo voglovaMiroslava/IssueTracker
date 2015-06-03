@@ -5,11 +5,12 @@
   <xs:element name="projekty">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="projekt">
+        <xs:element name="projekt" minOccurs="0" maxOccurs="unbounded">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="nazev-projektu" type="xs:string"/>
-              <xs:element name="pozadavky" type="pozadavky-type"/>
+              <xs:element name="popis-projektu" type="xs:string"/>
+              <xs:element name="pozadavky" type="pozadavky-type" minOccurs="1" maxOccurs="1"/>
             </xs:sequence>
             <xs:attribute name="zakaznik" use="required" type="xs:string"/>
             <xs:attribute name="pid" use="required" type="xs:decimal"/>
@@ -21,12 +22,46 @@
         </xs:element>
       </xs:sequence>
     </xs:complexType>
+    <xs:unique name="projektId">
+      <xs:selector xpath="projekt"/>
+      <xs:field xpath="@pid"/>
+    </xs:unique>
   </xs:element>
 
   <xs:complexType name="pozadavky-type">
     <xs:sequence>
-      <xs:element name="pozadavek"/>
+      <xs:element name="pozadavek" type="pozadavek-type" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
-  
+
+  <xs:complexType name="pozadavek-type">
+    <xs:sequence>
+      <xs:element name="zadavatel" type="xs:string"/>
+      <xs:element name="nazev-pozadavku" type="xs:string"/>
+      <xs:element name="obsah-pozadavku" type="xs:string"/>
+      <xs:element name="name-resitele" type="xs:string"/>
+      <xs:element name="datum-zadani" type="xs:date"/>
+      <xs:element name="datum-ukonceni" type="xs:date" nillable="true"/>
+    </xs:sequence>
+    <xs:attribute name="pozadavekid" type="xs:decimal" use="required"/>
+    <xs:attribute name="typ" type="typenum" use="required"/>
+    <xs:attribute name="stav" type="stavenum" use="required"/>
+  </xs:complexType>
+
+  <xs:simpleType name="typenum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="error"/>
+      <xs:enumeration value="request"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="stavenum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="isnew"/>
+      <xs:enumeration value="inprogress"/>
+      <xs:enumeration value="solved"/>
+      <xs:enumeration value="denied"/>
+    </xs:restriction>
+  </xs:simpleType>
+
 </xs:schema>

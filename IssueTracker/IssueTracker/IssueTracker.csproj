@@ -165,7 +165,22 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Entities\Diskuse.cs" />
+    <Compile Include="Models\Entities\EnumTypy.cs" />
+    <Compile Include="Models\Entities\Issue.cs" />
+    <Compile Include="Models\Entities\Osoba.cs" />
+    <Compile Include="Models\Entities\Projekt.cs" />
+    <Compile Include="Models\Entities\Zakaznik.cs" />
+    <Compile Include="Models\Entities\Zamestnanec.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Managers\DiskuseManager.cs" />
+    <Compile Include="Models\Managers\IDiskuseManager.cs" />
+    <Compile Include="Models\Managers\IIssueManager.cs" />
+    <Compile Include="Models\Managers\IOsobaManager.cs" />
+    <Compile Include="Models\Managers\IProjektManager.cs" />
+    <Compile Include="Models\Managers\IssueManager.cs" />
+    <Compile Include="Models\Managers\OsobaManager.cs" />
+    <Compile Include="Models\Managers\ProjektManager.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -191,6 +206,8 @@
     <None Include="App_Data\projektyschema.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\PublishProfiles\trackIssues - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\trackIssues - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

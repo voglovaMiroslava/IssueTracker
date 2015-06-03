@@ -1,22 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<projekty>
+<projekty  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
   <!--pid id projektu-->
   <projekt zakaznik ="jmeno-zakaznika" pid="1">
     <nazev-projektu>Nazev</nazev-projektu>
+    <popis-projektu>Popis</popis-projektu>
     <pozadavky>
       <!--Evidovat typ chyba/pozadavek-->
       <!--Evidovat stav novy/resi se/vyreseno/zamitnuto-->
       <!--iid unikatni i pres vsechny projekty-->
-      <pozadavek pozadavekid="1" typ="chyba" stav="resi_se">
-        <zadavatel></zadavatel>
-        <nazev-pozadavku></nazev-pozadavku>
-        <obsah-pozadavku></obsah-pozadavku>
-        <id-resitele></id-resitele>
-        <datum-zadani></datum-zadani>
-        <datum-ukonceni></datum-ukonceni>
+      <pozadavek pozadavekid="1" typ="request" stav="inprogress">
+        <zadavatel>tousekDominik</zadavatel>
+        <nazev-pozadavku>Dodelat IssueTracker</nazev-pozadavku>
+        <obsah-pozadavku>Dodelej, nebo te vyhostim.</obsah-pozadavku>
+        <name-resitele>voglovaMirka</name-resitele>
+        <!--YYYY-MM-DD-->
+        <datum-zadani>2015-06-02</datum-zadani>
+        <datum-ukonceni>2015-06-05</datum-ukonceni>
+      </pozadavek>
+      <pozadavek pozadavekid="2" typ="request" stav="inprogress">
+        <zadavatel>tousekDominik</zadavatel>
+        <nazev-pozadavku>Dodelat IssueTracker</nazev-pozadavku>
+        <obsah-pozadavku>Dodelej, nebo te vyhostim.</obsah-pozadavku>
+        <name-resitele>voglovaMirka</name-resitele>
+        <!--YYYY-MM-DD-->
+        <datum-zadani>2015-06-02</datum-zadani>
+        <datum-ukonceni xsi:nil="true"></datum-ukonceni>
       </pozadavek>
     </pozadavky>
-    
   </projekt>
-  
 </projekty>
