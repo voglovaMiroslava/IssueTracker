@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IssueTracker.Models
 {
-    interface IOsobaManager
+    interface IPersonManager
     {
         void changeSubscription(string personName, bool subscribe);
         void Add(Person person);
@@ -14,7 +14,7 @@ namespace IssueTracker.Models
         List<Person> GetAllEmplo();
         List<Person> GetAllCusto();
         List<Person> GetAll();
-        Person GetByName();
+        Person GetByName(string name);
         bool NameExists(string name);
     }
 }

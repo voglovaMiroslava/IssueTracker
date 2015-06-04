@@ -23,7 +23,7 @@ namespace IssueTracker.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-            Models.OsobaManager manager = new Models.OsobaManager();
+            Models.PersonManager manager = new Models.PersonManager();
             ViewBag.Bool = manager.NameExists("pepa");
 
             return View();

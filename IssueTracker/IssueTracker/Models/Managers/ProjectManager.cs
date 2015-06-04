@@ -54,6 +54,8 @@ namespace IssueTracker.Models
 
             toUpdateProject.Descendants("nazev-projektu").First().SetValue(project.Nazev);
             toUpdateProject.Descendants("popis-projektu").First().SetValue(project.Nazev);
+
+            _projektyXML.Save(_pathToXML);
         }
 
         private List<Project> GetList(IEnumerable<XElement> projekty)
