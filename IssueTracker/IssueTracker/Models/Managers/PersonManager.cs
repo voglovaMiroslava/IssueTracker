@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace IssueTracker.Models
 {
-    class PersonManager : IPersonManager
+     class PersonManager : IPersonManager
     {
         private XDocument _osobyXML;
         private string _pathToXML;
@@ -19,12 +19,20 @@ namespace IssueTracker.Models
             _osobyXML = XDocument.Load(_pathToXML);
         }
 
-        public void changeSubscription(string personName, bool subscribe)
+         /// <summary>
+         /// Meni subscription. Pokud vrati false, nepodarilo se zmenit.
+         /// </summary>
+         /// <param name="personName"></param>
+         /// <param name="subscribe"></param>
+         /// <returns></returns>
+        public bool changeSubscription(string personName, bool subscribe)
         {
-            IEnumerable<XElement> persons = _osobyXML.Root.Descendants("osoba").Where(a => a.Attribute("name").Value == personName);
+            IEnumerable<XElement> persons = _osobyXML.Root.Descendants("osoba").
+                Where(a => HttpUtility.HtmlDecode(a.Attribute("name").Value) == personName);
+
             if (persons.Count() == 0)
             {
-                return;
+                return false;
             }
 
             XElement person = persons.First();
@@ -38,21 +46,24 @@ namespace IssueTracker.Models
             }
 
             _osobyXML.Save(_pathToXML);
-
+            return true;
         }
 
         /// <summary>
-        /// Subscription defaultne nastavovana na "ne"
+        /// Subscription defaultne nastavovana na "ne". Vracene False znaci, ze se nepovedlo pridat osobu.
         /// </summary>
         /// <param name="person"></param>
-        public void Add(Person person)
+        public bool Add(Person person)
         {
             if(NameExists(person.Name))
             {
-                return;
+                return false;
             }
 
-            XElement newPerson = new XElement("osoba", new XAttribute("name", person.Name),  new XAttribute("zasilat", "ne"), new XElement("email", person.Email), new XElement("password", person.Password));
+            XElement newPerson = new XElement("osoba", new XAttribute("name", HttpUtility.HtmlEncode(person.Name)), 
+                new XAttribute("zasilat", "ne"),
+                new XElement("email", HttpUtility.HtmlEncode(person.Email)), 
+                new XElement("password", HttpUtility.HtmlEncode(person.Password)));
            
             if (person is Employee)
             {
@@ -65,22 +76,25 @@ namespace IssueTracker.Models
 
             _osobyXML.Root.Add(newPerson);
             _osobyXML.Save(_pathToXML);
+            return true;
         }
 
         /// <summary>
-        /// Update nezmeni subscription!!! JMENO i statut nezmenitelne! TZN. menim jen email a password.
+        /// Update meni jen email a password. Vrati false pokud se nepovedlo zmenit (osoba neexistuje).
         /// </summary>
         /// <param name="person"></param>
-        public void Update(Person person)
+        public bool Update(Person person)
         {
             if (!NameExists(person.Name))
             {
-                return;
+                return false;
             }
             XElement myPerson = _osobyXML.Root.Descendants("osoba").Where(a => a.Attribute("name").Value == person.Name).First();
 
-            myPerson.SetElementValue("email", person.Email);
-            myPerson.SetElementValue("password", person.Password);
+            myPerson.SetElementValue("email", HttpUtility.HtmlEncode(person.Email));
+            myPerson.SetElementValue("password", HttpUtility.HtmlEncode(person.Password));
+            _osobyXML.Save(_pathToXML);
+            return true;
         }
 
         private Person MakeMePerson(XElement person)
@@ -96,9 +110,9 @@ namespace IssueTracker.Models
                 myPerson = new Employee();
             }
 
-            myPerson.Email = person.Descendants("email").First().Value;
-            myPerson.Name = person.Attribute("name").Value;
-            myPerson.Password = person.Descendants("password").First().Value;
+            myPerson.Email = HttpUtility.HtmlDecode(person.Descendants("email").First().Value);
+            myPerson.Name = HttpUtility.HtmlDecode(person.Attribute("name").Value);
+            myPerson.Password = HttpUtility.HtmlDecode(person.Descendants("password").First().Value);
 
             return myPerson;
         }
@@ -112,7 +126,8 @@ namespace IssueTracker.Models
             }
             else
             {
-                persons = _osobyXML.Root.Descendants("osoba").Where(a => a.Attribute("statut").Value == statut);
+                persons = _osobyXML.Root.Descendants("osoba").
+                    Where(a => a.Attribute("statut").Value == statut);
             }
 
             List<Person> personsList = new List<Person>();
@@ -151,18 +166,36 @@ namespace IssueTracker.Models
             {
                 return null;
             }
-            XElement person = _osobyXML.Root.Descendants("osoba").Where(a => a.Attribute("name").Value == name).First();
+
+            XElement person = _osobyXML.Root.Descendants("osoba").
+                Where(a => HttpUtility.HtmlDecode(a.Attribute("name").Value) == name).First();
             return MakeMePerson(person);
         }
         
         public bool NameExists(string name)
         {
-            IEnumerable<XElement> persons = _osobyXML.Root.Descendants("osoba").Where(a => a.Attribute("name").Value == name);
+            IEnumerable<XElement> persons = _osobyXML.Root.Descendants("osoba").
+                Where(a => HttpUtility.HtmlDecode(a.Attribute("name").Value) == name);
+
             if (persons.Count() == 0)
             {
                 return false;
             }
             return true;
+        }
+
+        public List<Person> GetAllWithSubscribtion()
+        {
+            IEnumerable<XElement> persons = _osobyXML.Root.Descendants("osoba");
+            List<Person> personList = new List<Person>();
+            foreach (var item in persons)
+            {
+                if (item.Attribute("zasilat").Value == "ano")
+                {
+                    personList.Add(MakeMePerson(item));
+                }
+            }
+            return personList;
         }
     }
 }

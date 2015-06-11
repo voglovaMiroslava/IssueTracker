@@ -8,12 +8,13 @@ namespace IssueTracker.Models
 {
     interface IPersonManager
     {
-        void changeSubscription(string personName, bool subscribe);
-        void Add(Person person);
-        void Update(Person person);
+        bool changeSubscription(string personName, bool subscribe);
+        bool Add(Person person);
+        bool Update(Person person);
         List<Person> GetAllEmplo();
         List<Person> GetAllCusto();
         List<Person> GetAll();
+        List<Person> GetAllWithSubscribtion();
         Person GetByName(string name);
         bool NameExists(string name);
     }

@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema version="1.0"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            elementFormDefault="qualified">
   <xs:element name="projekty">
     <xs:complexType>
@@ -15,16 +16,16 @@
             <xs:attribute name="zakaznik" use="required" type="xs:string"/>
             <xs:attribute name="pid" use="required" type="xs:decimal"/>
           </xs:complexType>
-          <xs:unique name="pozadavekId">
-            <xs:selector xpath="pozadavky/pozadavek"/>
-            <xs:field xpath="@pozadavekid"/>
-          </xs:unique>
         </xs:element>
       </xs:sequence>
     </xs:complexType>
     <xs:unique name="projektId">
       <xs:selector xpath="projekt"/>
       <xs:field xpath="@pid"/>
+    </xs:unique>
+    <xs:unique name="pozadavekId">
+      <xs:selector xpath="projekt/pozadavky/pozadavek"/>
+      <xs:field xpath="@pozadavekid"/>
     </xs:unique>
   </xs:element>
 
@@ -44,6 +45,7 @@
       <xs:element name="datum-ukonceni" type="xs:date" nillable="true"/>
     </xs:sequence>
     <xs:attribute name="pozadavekid" type="xs:decimal" use="required"/>
+    <xs:attribute name="projectid" type="xs:decimal" use="required"/>
     <xs:attribute name="typ" type="typenum" use="required"/>
     <xs:attribute name="stav" type="stavenum" use="required"/>
   </xs:complexType>

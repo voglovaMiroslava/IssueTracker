@@ -9,10 +9,10 @@ namespace IssueTracker.Models
     interface IProjectManager
     {
         void Add(ref Project project);
-        void Update(Project project);
+        bool Update(Project project);
         List<Project> GetByClient(Client client);
         List<Project> GetAll();
-        List<Project> GetById(int id);
+        Project GetById(int id);
 
     }
 }

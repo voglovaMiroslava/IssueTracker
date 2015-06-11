@@ -2,13 +2,15 @@
 <projekty  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
   <!--pid id projektu-->
   <projekt zakaznik ="jmeno-zakaznika" pid="1">
+    <!--Nazev i popis vyzadovat od uzivatele pri pridavani projektu-->
     <nazev-projektu>Nazev</nazev-projektu>
     <popis-projektu>Popis</popis-projektu>
+    <!--Pri vytvoreni projektu nutno vytvorit pozadavky element-->
     <pozadavky>
-      <!--Evidovat typ chyba/pozadavek-->
-      <!--Evidovat stav novy/resi se/vyreseno/zamitnuto-->
-      <!--iid unikatni i pres vsechny projekty-->
-      <pozadavek pozadavekid="1" typ="request" stav="inprogress">
+      <!--Evidovat typ error/request-->
+      <!--Evidovat stav isnew/inprogress/solved/denied-->
+      <!--pozadavekid unikatni i pres vsechny projekty-->
+      <pozadavek pozadavekid="1" projectid ="1" typ="request" stav="inprogress">
         <zadavatel>tousekDominik</zadavatel>
         <nazev-pozadavku>Dodelat IssueTracker</nazev-pozadavku>
         <obsah-pozadavku>Dodelej, nebo te vyhostim.</obsah-pozadavku>
@@ -17,13 +19,28 @@
         <datum-zadani>2015-06-02</datum-zadani>
         <datum-ukonceni>2015-06-05</datum-ukonceni>
       </pozadavek>
-      <pozadavek pozadavekid="2" typ="request" stav="inprogress">
+      <pozadavek pozadavekid="2" projectid ="1" typ="request" stav="inprogress">
         <zadavatel>tousekDominik</zadavatel>
         <nazev-pozadavku>Dodelat IssueTracker</nazev-pozadavku>
         <obsah-pozadavku>Dodelej, nebo te vyhostim.</obsah-pozadavku>
         <name-resitele>voglovaMirka</name-resitele>
         <!--YYYY-MM-DD-->
         <datum-zadani>2015-06-02</datum-zadani>
+        <datum-ukonceni xsi:nil="true"></datum-ukonceni>
+      </pozadavek>
+    </pozadavky>
+  </projekt>
+  <projekt zakaznik ="fj" pid="2">
+    <nazev-projektu></nazev-projektu>
+    <popis-projektu></popis-projektu>
+    <pozadavky>
+      <pozadavek stav="isnew" projectid ="2" pozadavekid="3" typ="error">
+        <zadavatel></zadavatel>
+        <nazev-pozadavku></nazev-pozadavku>
+        <obsah-pozadavku></obsah-pozadavku>
+        <name-resitele></name-resitele>
+        <datum-zadani>2015-06-02</datum-zadani>
+        <!--nutno dostat do datum-ukonceni xsi:nil="true"-->
         <datum-ukonceni xsi:nil="true"></datum-ukonceni>
       </pozadavek>
     </pozadavky>

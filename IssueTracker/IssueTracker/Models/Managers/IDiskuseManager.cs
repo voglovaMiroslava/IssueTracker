@@ -8,7 +8,7 @@ namespace IssueTracker.Models
 {
     interface IDiskuseManager
     {
-        void AddComment();
+        void AddComment(int issueID, string comment);
         List<Comment> GetAllComments(int issueID);
     }
 }
