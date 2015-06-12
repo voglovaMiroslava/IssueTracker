@@ -48,16 +48,39 @@
   <projekt zakaznik="jana" pid="3">
     <nazev-projektu>sbirani Jahod</nazev-projektu>
     <popis-projektu />
-    <pozadavky />
-  </projekt>
-  <projekt zakaznik="jana" pid="4">
-    <nazev-projektu>sbirani Jahod</nazev-projektu>
-    <popis-projektu>sbirani Jahod</popis-projektu>
-    <pozadavky />
-  </projekt>
-  <projekt zakaznik="jana" pid="5">
-    <nazev-projektu>sbirani Jahod</nazev-projektu>
-    <popis-projektu>sbirani Jahod</popis-projektu>
-    <pozadavky />
+    <pozadavky>
+      <pozadavek pozadavekid="5" projectid="3" typ="error" stav="isnew">
+        <zadavatel>franta</zadavatel>
+        <nazev-pozadavku>Jmeno issue</nazev-pozadavku>
+        <obsah-pozadavku>Obsah issue</obsah-pozadavku>
+        <name-resitele />
+        <datum-zadani>2015-06-12</datum-zadani>
+        <datum-ukonceni xsi:nil="true" />
+      </pozadavek>
+      <pozadavek pozadavekid="6" projectid="3" typ="error" stav="isnew">
+        <zadavatel>franta</zadavatel>
+        <nazev-pozadavku>Jmeno issue</nazev-pozadavku>
+        <obsah-pozadavku>Obsah issue</obsah-pozadavku>
+        <name-resitele>pepaN</name-resitele>
+        <datum-zadani>2015-06-12</datum-zadani>
+        <datum-ukonceni xsi:nil="true" />
+      </pozadavek>
+      <pozadavek pozadavekid="7" projectid="3" typ="error" stav="isnew">
+        <zadavatel>franta</zadavatel>
+        <nazev-pozadavku>Jmeno issue</nazev-pozadavku>
+        <obsah-pozadavku>Obsah issue</obsah-pozadavku>
+        <name-resitele />
+        <datum-zadani>2015-06-12</datum-zadani>
+        <datum-ukonceni xsi:nil="true" />
+      </pozadavek>
+      <pozadavek pozadavekid="8" projectid="3" typ="error" stav="isnew">
+        <zadavatel>franta</zadavatel>
+        <nazev-pozadavku>Jmeno issue</nazev-pozadavku>
+        <obsah-pozadavku>Obsah issue</obsah-pozadavku>
+        <name-resitele>pepaN</name-resitele>
+        <datum-zadani>2015-06-12</datum-zadani>
+        <datum-ukonceni xsi:nil="true" />
+      </pozadavek>
+    </pozadavky>
   </projekt>
 </projekty>

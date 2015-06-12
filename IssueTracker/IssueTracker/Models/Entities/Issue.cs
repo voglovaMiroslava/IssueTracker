@@ -16,7 +16,7 @@ namespace IssueTracker.Models
         public int IDproject { get; set; }
         public DateTime AddedDate { get; set; }
         public DateTime? FinishedDate { get; set; }
-        public Type IssueType { get; set; }
+        public IssueType IssueType { get; set; }
         public State IssueState { get; set; }
 
         public Issue() { }

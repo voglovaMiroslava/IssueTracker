@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IssueTracker.Models
 {
-    public enum Type
+    public enum IssueType
     {
         error, request
     }

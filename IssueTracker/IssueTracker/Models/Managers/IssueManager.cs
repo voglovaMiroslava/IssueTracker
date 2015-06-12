@@ -8,7 +8,6 @@ using System.Xml.Linq;
 
 namespace IssueTracker.Models
 {
-    //POUZIT HTTPUTILITY.HTMLENCODE A HTTPUTILITY.DECODE
     public class IssueManager : IIssueManager
     {
         private XDocument _projektyXML;
@@ -21,7 +20,8 @@ namespace IssueTracker.Models
         }
 
         /// <summary>
-        /// Jedine povolene null hodnoty jsou jmeno resitele a datum ukonceni.
+        /// Issue musi mit vyplnen obsah, nazev, id projektu, stav, typ a kdo ji zadal.
+        /// Datum zadani a id issue nastaveno v teto fci.
         /// </summary>
         /// <param name="issue"></param>
         public bool Create(ref Issue issue)
@@ -55,8 +55,8 @@ namespace IssueTracker.Models
                 new XElement("nazev-pozadavku", HttpUtility.HtmlEncode(issue.Name)),
                 new XElement("obsah-pozadavku", HttpUtility.HtmlEncode(issue.Content)),
                 new XElement("name-resitele"),
-                new XElement("datum-zadani", String.Format("{0:YYYY-MM-DD}", issue.AddedDate)),
-                new XElement("datum-ukonceni", new XAttribute("xsi:nil", "true")));
+                new XElement("datum-zadani", String.Format("{0:yyyy-MM-dd}", DateTime.Now)),
+                new XElement("datum-ukonceni", new XAttribute(XName.Get("nil", "http://www.w3.org/2001/XMLSchema-instance"), "true")));
 
             if (issue.FinishedDate.HasValue)
             {
@@ -123,7 +123,7 @@ namespace IssueTracker.Models
         /// <param name="type">pokud není, nehledá se podle toho</param>
         /// <param name="state">pokud není, nehledá se podle toho</param>
         /// <returns></returns>
-        public List<Issue> GetAll(Project project, Type? type, State? state)
+        public List<Issue> GetAll(Project project, IssueType? type, State? state)
         {
             if (project == null && (!type.HasValue) && (!state.HasValue))
             {
@@ -138,7 +138,7 @@ namespace IssueTracker.Models
             }
             if (type.HasValue)
             {
-                allIssues = GetAllByType((Type)type, allIssues);
+                allIssues = GetAllByType((IssueType)type, allIssues);
             }
             if (state.HasValue)
             {
@@ -163,7 +163,7 @@ namespace IssueTracker.Models
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        public List<Issue> GetAllByType(Type type)
+        public List<Issue> GetAllByType(IssueType type)
         {
             return MakeMeList(GetAllByType(type, _projektyXML.Root.Descendants("pozadavek")));
         }
@@ -185,7 +185,7 @@ namespace IssueTracker.Models
         /// <returns></returns>
         public Issue GetById(int issueID)
         {
-            IEnumerable<XElement> issues = _projektyXML.Root.Descendants("pozadavek").Where(a => Convert.ToInt32(a.Attribute("pozadavekid")) == issueID);
+            IEnumerable<XElement> issues = _projektyXML.Root.Descendants("pozadavek").Where(a => Convert.ToInt32(a.Attribute("pozadavekid").Value) == issueID);
             List<Issue> myIssues = MakeMeList(issues);
             if (myIssues == null)
             {
@@ -210,7 +210,7 @@ namespace IssueTracker.Models
             return findedIsues;
         }
 
-        private IEnumerable<XElement> GetAllByType(Type type, IEnumerable<XElement> issues)
+        private IEnumerable<XElement> GetAllByType(IssueType type, IEnumerable<XElement> issues)
         {
             List<XElement> findedIsues = new List<XElement>();
             foreach (var item in issues)
@@ -259,7 +259,7 @@ namespace IssueTracker.Models
                 newIssue.ID = Convert.ToInt32(item.Attribute("pozadavekid").Value);
                 newIssue.IDproject = Convert.ToInt32(item.Attribute("projectid").Value);
                 newIssue.IssueState = (State)Enum.Parse(typeof(State), item.Attribute("stav").Value);
-                newIssue.IssueType = (Type)Enum.Parse(typeof(Type), item.Attribute("typ").Value);
+                newIssue.IssueType = (IssueType)Enum.Parse(typeof(IssueType), item.Attribute("typ").Value);
                 newIssue.Name = HttpUtility.HtmlDecode(item.Descendants("nazev-pozadavku").First().Value);
                 string endDate = item.Descendants("datum-ukonceni").First().Value;
                 if (endDate != "")

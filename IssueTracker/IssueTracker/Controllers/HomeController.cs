@@ -25,18 +25,12 @@ namespace IssueTracker.Controllers
         {
             ViewBag.Message = "Your test page.";
 
-            ProjectManager manager = new ProjectManager();
-
-            ViewBag.Project = manager.GetById(1);
-            ViewBag.ClientProject = manager.GetByClient("fj");
-            ViewBag.AllProjects = manager.GetAll();
-
-            Project project = new Project(3, "jana", "sbirani Jahod");
-            manager.Add(ref project);
-            project.Popis = "Jak sbirat jahody ve farmiville";
-            ViewBag.ShoudBeTrue = manager.Update(project);
-            ViewBag.ShoudBeFalse = manager.Update(new Project(10,"nnn","JJJ"));
-
+            IssueManager manage = new IssueManager();
+            ViewBag.OneIssue = manage.GetById(2);
+            ViewBag.IsNewIssue = manage.GetAllByState(State.isnew);
+            ViewBag.ErrorIssue = manage.GetAllByType(IssueType.error);
+            ViewBag.ProjectIssue = manage.GetAllFromProject(new Project(3, "", ""));
+            ViewBag.StateProject = manage.GetAll(new Project(3, "", ""), null, State.isnew);
             return View();
         }
     }

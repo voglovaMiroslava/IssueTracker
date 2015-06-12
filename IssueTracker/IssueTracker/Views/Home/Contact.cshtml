@@ -5,26 +5,26 @@
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<h4>Projekt s id 1</h4>
-<p>
-    @ViewBag.Project.ToString()
-</p>
+<h4>Issue id 2</h4>
+<p>@ViewBag.OneIssue.ToString()</p>
 
-<h4>Vsechny projekty</h4>
-@foreach (var item in ViewBag.AllProjects)
+<h4>IsNew issue</h4>
+@foreach (var item in ViewBag.IsNewIssue)
 {
-    <p>
-        @item.ToString()
-    </p>
+    <p>@item.ToString()</p>
 }
-
-<h4>Vsechny projekty klienta fj</h4>
-@foreach (var item in ViewBag.ClientProject)
+<h4>error issue</h4>
+@foreach (var item in ViewBag.ErrorIssue)
 {
-    <p>
-        @item.ToString()
-    </p>
+    <p>@item.ToString()</p>
 }
-
-<h4>  ViewBag.ShoudBeTrue @ViewBag.ShoudBeTrue</h4>
-<h4>  ViewBag.ShoudBeFalse @ViewBag.ShoudBeFalse</h4>
+<h4>project num 3</h4>
+@foreach (var item in ViewBag.ProjectIssue)
+{
+    <p>@item.ToString()</p>
+}
+<h4>is new project 3</h4>
+@foreach (var item in ViewBag.StateProject)
+{
+    <p>@item.ToString()</p>
+}
