@@ -8,15 +8,25 @@ using System.Xml.Linq;
 
 namespace IssueTracker.Models
 {
-    public class DiskuseManager : IDiskuseManager
+    public class DiscussionManager : IDiscussionManager
     {
         private XDocument _diskuseXML;
         private string _pathToXML;
 
-        public DiskuseManager()
+        public DiscussionManager()
         {
             _pathToXML = HttpContext.Current.Server.MapPath("~/App_Data/Diskuse.xml");
             _diskuseXML = XDocument.Load(_pathToXML);
+        }
+
+        /// <summary>
+        /// Komentar musi obsahovat minimalne jmeno diskutera, obsah a idIssue, ke ktere se pridava.
+        /// Added time nastaven az v teto fci.
+        /// </summary>
+        /// <param name="comment"></param>
+        public void AddComment(Comment comment)
+        {
+            AddComment(comment.IDissue, comment.Content, comment.Diskuter);
         }
 
         public void AddComment(int issueID, string comment, string name)
@@ -40,7 +50,7 @@ namespace IssueTracker.Models
             XElement myComment = new XElement("zaznam", new XAttribute("poradi", poradi),
                 new XElement("diskuter", HttpUtility.HtmlEncode(name)),
                 new XElement("obsah", HttpUtility.HtmlEncode(comment)),
-                new XElement("datum", string.Format("{0:YYYY-MM-DDThh:mm:ss}", DateTime.Now)));
+                new XElement("datum", string.Format("{0:yyyy-MM-ddThh:mm:ss}", DateTime.Now)));
 
             myDiscusion.Add(myComment);
 
@@ -65,13 +75,13 @@ namespace IssueTracker.Models
             {
                 return null;
             }
-
+            IEnumerable<XElement> commnetsIe = discusion.First().Descendants("zaznam");
             List<Comment> comments = new List<Comment>();
 
-            foreach (var item in discusion)
+            foreach (var item in commnetsIe)
             {
                 Comment newComment = new Comment();
-                newComment.Content = HttpUtility.HtmlDecode(item.Descendants("zaznam").First().Value);
+                newComment.Content = HttpUtility.HtmlDecode(item.Descendants("obsah").First().Value);
                 newComment.Added = Convert.ToDateTime(item.Descendants("datum").First().Value);
                 newComment.Diskuter = HttpUtility.HtmlDecode(item.Descendants("diskuter").First().Value);
                 newComment.IDissue = issueID;

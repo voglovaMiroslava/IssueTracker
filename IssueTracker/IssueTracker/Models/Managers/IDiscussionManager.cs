@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IssueTracker.Models
 {
-    interface IDiskuseManager
+    interface IDiscussionManager
     {
         void AddComment(int issueID, string comment, string name);
         List<Comment> GetAllComments(int issueID);

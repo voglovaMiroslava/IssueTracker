@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <vsechnydiskuse>
   <diskuse idpozadavku="1">
     <zaznam poradi="1">
@@ -7,11 +7,28 @@
       <!--YYYY-MM-DDThh:mm:ss-->
       <datum>2015-05-30T09:30:00</datum>
     </zaznam>
-      <zaznam poradi="2">
+    <zaznam poradi="2">
       <diskuter>xvoglova</diskuter>
       <obsah>Ja vim...</obsah>
       <!--YYYY-MM-DDThh:mm:ss-->
       <datum>2015-05-30T10:30:00</datum>
+    </zaznam>
+    <zaznam poradi="3">
+      <diskuter>ja</diskuter>
+      <obsah>brr</obsah>
+      <datum>2015-06-12T11:55:29</datum>
+    </zaznam>
+  </diskuse>
+  <diskuse idpozadavku="6">
+    <zaznam poradi="1">
+      <diskuter>&amp;lt;br&amp;gt;&amp;lt;/br&amp;gt;</diskuter>
+      <obsah>Šel pes do lesa</obsah>
+      <datum>2015-06-12T11:50:28</datum>
+    </zaznam>
+    <zaznam poradi="2">
+      <diskuter>&amp;lt;br&amp;gt;&amp;lt;/br&amp;gt;</diskuter>
+      <obsah>Šel pes do lesa</obsah>
+      <datum>2015-06-12T11:55:29</datum>
     </zaznam>
   </diskuse>
 </vsechnydiskuse>

@@ -165,7 +165,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Entities\Diskuse.cs" />
+    <Compile Include="Models\Entities\Comment.cs" />
     <Compile Include="Models\Entities\EnumTypy.cs" />
     <Compile Include="Models\Entities\Issue.cs" />
     <Compile Include="Models\Entities\Person.cs" />
@@ -173,8 +173,8 @@
     <Compile Include="Models\Entities\Client.cs" />
     <Compile Include="Models\Entities\Employee.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Managers\DiskuseManager.cs" />
-    <Compile Include="Models\Managers\IDiskuseManager.cs" />
+    <Compile Include="Models\Managers\DiscussionManager.cs" />
+    <Compile Include="Models\Managers\IDiscussionManager.cs" />
     <Compile Include="Models\Managers\IIssueManager.cs" />
     <Compile Include="Models\Managers\IPersonManager.cs" />
     <Compile Include="Models\Managers\IProjectManager.cs" />

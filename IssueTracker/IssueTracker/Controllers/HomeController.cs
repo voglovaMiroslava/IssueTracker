@@ -23,29 +23,19 @@ namespace IssueTracker.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-            PersonManager manager = new PersonManager();
-            Employee pepa = new Employee();
-            pepa.Name = "pepaN";
-            pepa.Password = "<juchuuJsemChytrej>";
-            pepa.Email = "jen@jauuuu";
+            ViewBag.Message = "Your test page.";
 
+            DiscussionManager discusion = new DiscussionManager();
+            Comment comm = new Comment();
+            comm.Content = "Šel pes do lesa";
+            comm.Diskuter = "<br></br>";
+            comm.IDissue = 6;
 
-            ViewBag.UpdateExisting = manager.GetByName("pepaN").Password;
-            Person pes = manager.GetByName("pes");
-            if (pes != null)
-            {
-                ViewBag.UpdateNotExisting = pes.Email;
-            }
-            else
-            {
-                ViewBag.UpdateNotExisting = "Osoba nenalezena";
-            }
+            discusion.AddComment(comm);
+            discusion.AddComment(1, "brr", "ja");
 
-            ViewBag.SearchEmplo = manager.GetAllEmplo();
-            ViewBag.SearchClient = manager.GetAllCusto();
-            ViewBag.SearchSub = manager.GetAllWithSubscribtion();
-            ViewBag.SearchAll = manager.GetAll();
+            ViewBag.SearchComments1 = discusion.GetAllComments(1);
+            ViewBag.SearchComments6 = discusion.GetAllComments(6);
             return View();
         }
     }

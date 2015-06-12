@@ -4,36 +4,18 @@
 
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
-<h3>Person manager:</h3>
-<h4>Adding existing:</h4>
-<h4>Adding not-existing:</h4>
-<h4>Updating existing:</h4>
-<h4>Updating not-existing:</h4>
-<h4>Change subscription existing:@ViewBag.UpdateExisting</h4>
-<h4>Change subscription notexisting: @ViewBag.UpdateNotExisting</h4>
 
-
-<h4>Jen employee</h4>
-@foreach (IssueTracker.Models.Person item in ViewBag.SearchEmplo)
+<h4>Diskuse issue1</h4>
+@foreach (var item in ViewBag.SearchComments1)
 {
    
-        <p>Jmeno: @item.Name |Heslo: @item.Password |Email: @item.Email</p>
+        <p>Jmeno: @item.Diskuter |Obsah: @item.Content |Vlozeno: @item.Added  | Order> @item.Order</p>
    
 }
-<h4>Jen zakaznici</h4>
-@foreach (var item in ViewBag.SearchClient)
+<h4>Diskuse issue6</h4>
+@foreach (var item in ViewBag.SearchComments6)
 {
 
-    <p>Jmeno: @item.Name |Heslo: @item.Password |Email: @item.Email</p>
+    <p>Jmeno: @item.Diskuter |Obsah: @item.Content |Vlozeno: @item.Added  | Order> @item.Order</p>
 
-}
-<h4>Vsichni se subs</h4>
-@foreach (var item in ViewBag.SearchSub)
-{
-    <p>Jmeno: @item.Name |Heslo: @item.Password |Email: @item.Email</p>
-}
-<h4>Vsichni</h4>
-@foreach (var item in ViewBag.SearchAll)
-{
-    <p>Jmeno: @item.Name |Heslo: @item.Password |Email: @item.Email</p>
 }
