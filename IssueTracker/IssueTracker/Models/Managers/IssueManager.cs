@@ -9,7 +9,7 @@ using System.Xml.Linq;
 namespace IssueTracker.Models
 {
     //POUZIT HTTPUTILITY.HTMLENCODE A HTTPUTILITY.DECODE
-    class IssueManager : IIssueManager
+    public class IssueManager : IIssueManager
     {
         private XDocument _projektyXML;
         private string _pathToXML;

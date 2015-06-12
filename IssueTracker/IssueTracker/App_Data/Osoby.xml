@@ -1,7 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <seznamosob xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <!--Zakaznici i zamestnanci povinny element. Ale oba mohou byt prazdny-->
-
   <!--Jedinecne name pro kazdou osobu, statut povinny(jen zakaznik/zamestnanec)-->
   <osoba name="tousekDominik" statut="zakaznik" zasilat="ano">
     <!--Musi byt jak email tak password-->
@@ -11,5 +10,13 @@
   <osoba name="voglovaMirka" statut="zamestnanec" zasilat="ne">
     <email>noChance@here</email>
     <password>notSoSmart</password>
+  </osoba>
+  <osoba name="pepa" zasilat="ne" statut="zamestnanec">
+    <email>jen@ja</email>
+    <password>&amp;lt;juchuuJsemChytrej&amp;gt;</password>
+  </osoba>
+  <osoba name="pepaN" zasilat="ano" statut="zamestnanec">
+    <email>jen@jauuuu</email>
+    <password>&amp;lt;juchuuJsemChytrej&amp;gt;</password>
   </osoba>
 </seznamosob>

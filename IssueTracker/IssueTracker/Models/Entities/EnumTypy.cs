@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace IssueTracker.Models
 {
-    enum Type
+    public enum Type
     {
         error, request
     }
 
-    enum State
+    public enum State
     { 
         isnew, inprogress, solved, denied
     }

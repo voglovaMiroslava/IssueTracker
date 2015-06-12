@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IssueTracker.Models
 {
-    class Employee : Person
+    public class Employee : Person
     {
         public Employee() : base() { }
     }

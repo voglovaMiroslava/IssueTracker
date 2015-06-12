@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace IssueTracker.Models
 {
-     class PersonManager : IPersonManager
+    public class PersonManager : IPersonManager
     {
         private XDocument _osobyXML;
         private string _pathToXML;
@@ -25,7 +25,7 @@ namespace IssueTracker.Models
          /// <param name="personName"></param>
          /// <param name="subscribe"></param>
          /// <returns></returns>
-        public bool changeSubscription(string personName, bool subscribe)
+        public bool ChangeSubscription(string personName, bool subscribe)
         {
             IEnumerable<XElement> persons = _osobyXML.Root.Descendants("osoba").
                 Where(a => HttpUtility.HtmlDecode(a.Attribute("name").Value) == personName);

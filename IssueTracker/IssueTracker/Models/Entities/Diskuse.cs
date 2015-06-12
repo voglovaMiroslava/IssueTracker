@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IssueTracker.Models
 {
-    class Comment
+    public class Comment
     {
         public int IDissue { get; set; }
         public int Order { get; set; }

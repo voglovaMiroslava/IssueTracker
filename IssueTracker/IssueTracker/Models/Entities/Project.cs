@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IssueTracker.Models
 {
-    class Project
+    public class Project
     {
         public int ID { get; set; }
         public string Zakaznik { get; set; }

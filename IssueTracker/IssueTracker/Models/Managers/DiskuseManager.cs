@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace IssueTracker.Models
 {
-    class DiskuseManager : IDiskuseManager
+    public class DiskuseManager : IDiskuseManager
     {
         private XDocument _diskuseXML;
         private string _pathToXML;

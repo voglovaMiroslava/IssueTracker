@@ -8,7 +8,7 @@ namespace IssueTracker.Models
 {
     interface IPersonManager
     {
-        bool changeSubscription(string personName, bool subscribe);
+        bool ChangeSubscription(string personName, bool subscribe);
         bool Add(Person person);
         bool Update(Person person);
         List<Person> GetAllEmplo();
