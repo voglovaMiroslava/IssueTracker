@@ -8,7 +8,6 @@ using System.Xml.Linq;
 
 namespace IssueTracker.Models
 {
-    //POUZIT HTTPUTILITY.HTMLENCODE A HTTPUTILITY.DECODE
     public class ProjectManager : IProjectManager
     {
         private XDocument _projektyXML;
@@ -41,6 +40,7 @@ namespace IssueTracker.Models
             novyProj.Add(new XElement("nazev-projektu", HttpUtility.HtmlEncode(project.Nazev)), 
                 new XElement("popis-projektu", HttpUtility.HtmlEncode(project.Popis)), 
                 new XElement("pozadavky"));
+            _projektyXML.Root.Add(novyProj);
             _projektyXML.Save(_pathToXML);
         }
 
@@ -62,7 +62,7 @@ namespace IssueTracker.Models
             XElement toUpdateProject = projekty.First();
 
             toUpdateProject.Descendants("nazev-projektu").First().SetValue(HttpUtility.HtmlEncode(project.Nazev));
-            toUpdateProject.Descendants("popis-projektu").First().SetValue(HttpUtility.HtmlEncode(project.Nazev));
+            toUpdateProject.Descendants("popis-projektu").First().SetValue(HttpUtility.HtmlEncode(project.Popis));
 
             _projektyXML.Save(_pathToXML);
             return true;
@@ -75,8 +75,13 @@ namespace IssueTracker.Models
         /// <returns></returns>
         public List<Project> GetByClient(Client client)
         {
+            return GetByClient(client.Name);
+        }
+
+        public List<Project> GetByClient(string client)
+        {
             IEnumerable<XElement> projekty = _projektyXML.Root.Descendants("projekt").
-                Where(a => HttpUtility.HtmlDecode(a.Attribute("zakaznik").Value) == client.Name);
+                Where(a => HttpUtility.HtmlDecode(a.Attribute("zakaznik").Value) == client);
             return GetList(projekty);
         }
 
@@ -119,9 +124,10 @@ namespace IssueTracker.Models
             foreach (var item in projekty)
             {
                 Project newPro = new Project(Convert.ToInt32(item.Attribute("pid").Value),
-                    item.Attribute("zakaznik").Value,
-                    item.Descendants("nazev-projektu").First().Value);
-                newPro.Popis = item.Descendants("popis-projektu").First().Value;
+                    HttpUtility.HtmlDecode(item.Attribute("zakaznik").Value),
+                    HttpUtility.HtmlDecode(item.Descendants("nazev-projektu").First().Value));
+
+                newPro.Popis =  HttpUtility.HtmlDecode(item.Descendants("popis-projektu").First().Value);
                 projectList.Add(newPro);
             }
 

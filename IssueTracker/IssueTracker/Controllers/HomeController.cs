@@ -25,17 +25,18 @@ namespace IssueTracker.Controllers
         {
             ViewBag.Message = "Your test page.";
 
-            DiscussionManager discusion = new DiscussionManager();
-            Comment comm = new Comment();
-            comm.Content = "Šel pes do lesa";
-            comm.Diskuter = "<br></br>";
-            comm.IDissue = 6;
+            ProjectManager manager = new ProjectManager();
 
-            discusion.AddComment(comm);
-            discusion.AddComment(1, "brr", "ja");
+            ViewBag.Project = manager.GetById(1);
+            ViewBag.ClientProject = manager.GetByClient("fj");
+            ViewBag.AllProjects = manager.GetAll();
 
-            ViewBag.SearchComments1 = discusion.GetAllComments(1);
-            ViewBag.SearchComments6 = discusion.GetAllComments(6);
+            Project project = new Project(3, "jana", "sbirani Jahod");
+            manager.Add(ref project);
+            project.Popis = "Jak sbirat jahody ve farmiville";
+            ViewBag.ShoudBeTrue = manager.Update(project);
+            ViewBag.ShoudBeFalse = manager.Update(new Project(10,"nnn","JJJ"));
+
             return View();
         }
     }

@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<projekty  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+﻿<?xml version="1.0" encoding="utf-8"?>
+<projekty xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <!--pid id projektu-->
-  <projekt zakaznik ="jmeno-zakaznika" pid="1">
+  <projekt zakaznik="jmeno-zakaznika" pid="1">
     <!--Nazev i popis vyzadovat od uzivatele pri pridavani projektu-->
     <nazev-projektu>Nazev</nazev-projektu>
     <popis-projektu>Popis</popis-projektu>
@@ -10,7 +10,7 @@
       <!--Evidovat typ error/request-->
       <!--Evidovat stav isnew/inprogress/solved/denied-->
       <!--pozadavekid unikatni i pres vsechny projekty-->
-      <pozadavek pozadavekid="1" projectid ="1" typ="request" stav="inprogress">
+      <pozadavek pozadavekid="1" projectid="1" typ="request" stav="inprogress">
         <zadavatel>tousekDominik</zadavatel>
         <nazev-pozadavku>Dodelat IssueTracker</nazev-pozadavku>
         <obsah-pozadavku>Dodelej, nebo te vyhostim.</obsah-pozadavku>
@@ -19,7 +19,7 @@
         <datum-zadani>2015-06-02</datum-zadani>
         <datum-ukonceni>2015-06-05</datum-ukonceni>
       </pozadavek>
-      <pozadavek pozadavekid="2" projectid ="1" typ="request" stav="inprogress">
+      <pozadavek pozadavekid="2" projectid="1" typ="request" stav="inprogress">
         <zadavatel>tousekDominik</zadavatel>
         <nazev-pozadavku>Dodelat IssueTracker</nazev-pozadavku>
         <obsah-pozadavku>Dodelej, nebo te vyhostim.</obsah-pozadavku>
@@ -30,11 +30,11 @@
       </pozadavek>
     </pozadavky>
   </projekt>
-  <projekt zakaznik ="fj" pid="2">
+  <projekt zakaznik="fj" pid="2">
     <nazev-projektu></nazev-projektu>
     <popis-projektu></popis-projektu>
     <pozadavky>
-      <pozadavek stav="isnew" projectid ="2" pozadavekid="3" typ="error">
+      <pozadavek stav="isnew" projectid="2" pozadavekid="3" typ="error">
         <zadavatel></zadavatel>
         <nazev-pozadavku></nazev-pozadavku>
         <obsah-pozadavku></obsah-pozadavku>
@@ -44,5 +44,20 @@
         <datum-ukonceni xsi:nil="true"></datum-ukonceni>
       </pozadavek>
     </pozadavky>
+  </projekt>
+  <projekt zakaznik="jana" pid="3">
+    <nazev-projektu>sbirani Jahod</nazev-projektu>
+    <popis-projektu />
+    <pozadavky />
+  </projekt>
+  <projekt zakaznik="jana" pid="4">
+    <nazev-projektu>sbirani Jahod</nazev-projektu>
+    <popis-projektu>sbirani Jahod</popis-projektu>
+    <pozadavky />
+  </projekt>
+  <projekt zakaznik="jana" pid="5">
+    <nazev-projektu>sbirani Jahod</nazev-projektu>
+    <popis-projektu>sbirani Jahod</popis-projektu>
+    <pozadavky />
   </projekt>
 </projekty>

@@ -18,6 +18,16 @@
       <obsah>brr</obsah>
       <datum>2015-06-12T11:55:29</datum>
     </zaznam>
+    <zaznam poradi="4">
+      <diskuter>ja</diskuter>
+      <obsah>brr</obsah>
+      <datum>2015-06-12T03:00:21</datum>
+    </zaznam>
+    <zaznam poradi="5">
+      <diskuter>ja</diskuter>
+      <obsah>brr</obsah>
+      <datum>2015-06-12T03:02:24</datum>
+    </zaznam>
   </diskuse>
   <diskuse idpozadavku="6">
     <zaznam poradi="1">
@@ -29,6 +39,16 @@
       <diskuter>&amp;lt;br&amp;gt;&amp;lt;/br&amp;gt;</diskuter>
       <obsah>Šel pes do lesa</obsah>
       <datum>2015-06-12T11:55:29</datum>
+    </zaznam>
+    <zaznam poradi="3">
+      <diskuter>&amp;lt;br&amp;gt;&amp;lt;/br&amp;gt;</diskuter>
+      <obsah>Šel pes do lesa</obsah>
+      <datum>2015-06-12T03:00:21</datum>
+    </zaznam>
+    <zaznam poradi="4">
+      <diskuter>&amp;lt;br&amp;gt;&amp;lt;/br&amp;gt;</diskuter>
+      <obsah>Šel pes do lesa</obsah>
+      <datum>2015-06-12T03:02:24</datum>
     </zaznam>
   </diskuse>
 </vsechnydiskuse>
