@@ -1,0 +1,39 @@
+﻿@using IssueTracker.Models
+@model Comment
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add Comment</h2>
+
+<br />
+
+@using (@Html.BeginForm())
+{
+    @Html.Hidden("IssueId",(int) ViewBag.IssueID)
+    <div class="form-group">
+        @Html.LabelFor(m => m.Diskuter, "Your Name", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Diskuter, new { @class = "form-control", @style = "margin:7px" })
+            @if (ViewBag.NotValidName != null)
+            {
+                <p style="margin:7px;color:crimson"> @ViewBag.NotValidName </p>
+            }
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Content,"Your Comment:", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10" style="height:200px">
+            @Html.TextAreaFor(m => m.Content, new { @class = "form-control", @style = "height:200px;margin:7px" })
+            @if (ViewBag.NotValidContent != null)
+            {
+                <p style="margin:7px;color:crimson"> @ViewBag.NotValidContent</p>
+            }
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="SAVE IT!" class="btn btn-default" />
+    </div>
+}
+

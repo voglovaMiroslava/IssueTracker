@@ -97,50 +97,6 @@ namespace IssueTracker.Models
             return true;
         }
 
-        private Person MakeMePerson(XElement person)
-        {
-            Person myPerson;
-
-            if (person.Attribute("statut").Value == "zakaznik")
-            {
-                myPerson = new Client();
-            }
-            else
-            {
-                myPerson = new Employee();
-            }
-
-            myPerson.Email = HttpUtility.HtmlDecode(person.Descendants("email").First().Value);
-            myPerson.Name = HttpUtility.HtmlDecode(person.Attribute("name").Value);
-            myPerson.Password = HttpUtility.HtmlDecode(person.Descendants("password").First().Value);
-
-            return myPerson;
-        }
-
-        private List<Person> GetThemAll(string statut)
-        {
-            IEnumerable<XElement> persons;
-            if (statut == null)
-            {
-                persons = _osobyXML.Root.Descendants("osoba");
-            }
-            else
-            {
-                persons = _osobyXML.Root.Descendants("osoba").
-                    Where(a => a.Attribute("statut").Value == statut);
-            }
-
-            List<Person> personsList = new List<Person>();
-
-            foreach (var item in persons)
-            {
-                Person person = MakeMePerson(item);
-                personsList.Add(person);
-            }
-
-            return personsList;
-        }
-
         public List<Person> GetAllEmplo()
         {
             return GetThemAll("zamestnanec");
@@ -196,6 +152,50 @@ namespace IssueTracker.Models
                 }
             }
             return personList;
+        }
+
+        private Person MakeMePerson(XElement person)
+        {
+            Person myPerson;
+
+            if (person.Attribute("statut").Value == "zakaznik")
+            {
+                myPerson = new Client();
+            }
+            else
+            {
+                myPerson = new Employee();
+            }
+
+            myPerson.Email = HttpUtility.HtmlDecode(person.Descendants("email").First().Value);
+            myPerson.Name = HttpUtility.HtmlDecode(person.Attribute("name").Value);
+            myPerson.Password = HttpUtility.HtmlDecode(person.Descendants("password").First().Value);
+
+            return myPerson;
+        }
+
+        private List<Person> GetThemAll(string statut)
+        {
+            IEnumerable<XElement> persons;
+            if (statut == null)
+            {
+                persons = _osobyXML.Root.Descendants("osoba");
+            }
+            else
+            {
+                persons = _osobyXML.Root.Descendants("osoba").
+                    Where(a => a.Attribute("statut").Value == statut);
+            }
+
+            List<Person> personsList = new List<Person>();
+
+            foreach (var item in persons)
+            {
+                Person person = MakeMePerson(item);
+                personsList.Add(person);
+            }
+
+            return personsList;
         }
     }
 }

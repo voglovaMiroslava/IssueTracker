@@ -8,7 +8,7 @@ namespace IssueTracker.Models
 {
     interface IIssueManager
     {
-        bool Create(ref Issue issue);
+        bool Create(Issue issue);
         bool Update(Issue issue);
         List<Issue> GetAll();
         List<Issue> GetAll(Project project, IssueType? type, State? state);

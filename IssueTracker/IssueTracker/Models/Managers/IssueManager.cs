@@ -24,7 +24,7 @@ namespace IssueTracker.Models
         /// Datum zadani a id issue nastaveno v teto fci.
         /// </summary>
         /// <param name="issue"></param>
-        public bool Create(ref Issue issue)
+        public bool Create(Issue issue)
         {
             int projectID = issue.IDproject;
             IEnumerable<XElement> projects = _projektyXML.Root.Descendants("projekt").
@@ -60,7 +60,7 @@ namespace IssueTracker.Models
 
             if (issue.FinishedDate.HasValue)
             {
-                newIssue.SetElementValue("datum-ukonceni", String.Format("{0:YYYY-MM-DD}", issue.FinishedDate));
+                newIssue.SetElementValue("datum-ukonceni", String.Format("{0:yyy-MM-dd}", issue.FinishedDate));
             }
             if (issue.AssignedTo != null)
             {
@@ -98,7 +98,7 @@ namespace IssueTracker.Models
             }
             if (issue.FinishedDate.HasValue)
             {
-                updateEl.SetElementValue("datum-ukonceni", String.Format("{0:YYYY-MM-DD}", issue.FinishedDate));
+                updateEl.SetElementValue("datum-ukonceni", String.Format("{0:yyyy-MM-dd}", issue.FinishedDate));
             }
 
             _projektyXML.Save(_pathToXML);

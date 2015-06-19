@@ -1,0 +1,130 @@
+﻿@using IssueTracker.Models
+@model IEnumerable<Issue>
+
+@{
+    ViewBag.Title = "Issues";
+}
+
+<h2>Issues</h2>
+<p>
+    @Html.ActionLink("Create New Issue", "Create")
+</p>
+
+
+@{ LoginManager mana = new LoginManager();
+ string name = mana.GiveMeLoged(CookieManager.GetCookie("UserCookie"));
+ if (name == null)
+ {
+    <h2>You can @Html.ActionLink("Login Here", "Index", "Home").</h2>
+ }
+ else
+ {
+    using (@Html.BeginForm())
+    {
+        <table class="table" style="border-top-style:groove;border-top-width:medium">
+            <tr style="border-bottom-color:#808080;border-bottom-style:groove;border-bottom-width:medium;font-size:14pt">
+                <th style="min-width:163px">
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>@Html.DropDownList("StateFilter", (IEnumerable<SelectListItem>)ViewBag.AllState, "State", new { @style = "width:100%" })</th>
+                <th>@Html.DropDownList("TypeFilter", (IEnumerable<SelectListItem>)ViewBag.AllType, "Type", new { @style = "width:100%" })</th>
+                <th>@Html.DropDownList("ProjectFilter", (IEnumerable<SelectListItem>)ViewBag.AllProject, "Project", new { @style = "width:90%" })</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AddedBy)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AssignedTo)
+                </th>
+
+                <th>
+                    Added
+                </th>
+                <th>
+                    Finished
+                </th>
+                <th><input type="submit" value="FILTRATE!" class="btn btn-default" /></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+
+                var typeColor = "yellow";
+                if (item.IssueType == IssueTracker.Models.IssueType.error)
+                {
+                    typeColor = "red";
+                }
+
+
+                var stateColor = "aqua";
+                switch (item.IssueState)
+                {
+                    case IssueTracker.Models.State.denied:
+                        stateColor = "rgb(165, 9, 38)";
+                        break;
+                    case IssueTracker.Models.State.inprogress:
+                        stateColor = "green";
+                        break;
+                    case IssueTracker.Models.State.solved:
+                        stateColor = "grey";
+                        break;
+                }
+
+
+                <tr>
+                    <td>
+                        <b> @Html.DisplayFor(modelItem => item.Name)</b>
+                    </td>
+                    <td style="border:3px dotted @stateColor" width="9%">
+                        @item.IssueState
+                    </td>
+                    <td style="border:3px dotted @typeColor" width="9%">
+                        @item.IssueType
+                    </td>
+                    <td>
+                        @ViewBag.Dictionary[item.IDproject]
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AddedBy)
+                    </td>
+                    <td>
+                        @if (item.AssignedTo != "")
+                        {
+                            @Html.DisplayFor(modelItem => item.AssignedTo)
+                        }
+                        else
+                        {
+                            @:Not assigned yet.
+                }
+                    </td>
+
+                    <td>
+                        @String.Format("{0:dd.MM.yyyy}", item.AddedDate)
+                    </td>
+                    <td>
+                        @{ if (item.FinishedDate.HasValue)
+                         {
+                            @String.Format("{0:dd.MM.yyyy}", item.FinishedDate);
+                         }
+                         else
+                         {
+                            @:Date not set.
+                 }
+                        }
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Discussion", "Discuss", "Discussion", new { id = item.ID }, new { })
+
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="9" style="padding-left:50px">
+                        @Html.DisplayFor(modelItem => item.Content)
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+    }
+ }}

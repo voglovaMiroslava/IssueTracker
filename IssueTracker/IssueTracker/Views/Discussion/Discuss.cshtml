@@ -1,0 +1,36 @@
+﻿@model IEnumerable<IssueTracker.Models.Comment>
+
+@{
+    ViewBag.Title = "Discuss";
+}
+
+<h2>Issue: @ViewBag.Issue.Name</h2>
+
+<h4>@ViewBag.Issue.Content</h4>
+
+<br/>
+@if (Model == null)
+{
+    <h4 style="color:crimson;align-self:center">No discusion here! Do you want to @Html.ActionLink("add comment", "Add", new { id = ViewBag.Issue.ID })?</h4>
+}
+else
+{
+    @Html.ActionLink("ADD NEW COMMENT", "Add", new { id = ViewBag.Issue.ID })
+    foreach (var item in Model)
+    {
+        <table class="table" style="border-top-style:groove;border-top-width:medium">
+            <tr style="border-bottom-color:#808080;border-bottom-style:groove;border-bottom-width:medium;font-size:medium">
+                <th style="min-width:450px">
+                    @item.Diskuter
+                </th>
+                <th style="min-width:450px;text-align:right">
+                    @item.Added
+                </th>
+
+            </tr>
+            <tr>
+                <td style="font-size:12pt;padding-left:60px;border-left: 4px solid #808080">@item.Content</td>
+            </tr>
+        </table>
+    }
+}

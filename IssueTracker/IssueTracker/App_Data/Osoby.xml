@@ -19,4 +19,20 @@
     <email>jen@jauuuu</email>
     <password>&amp;lt;juchuuJsemChytrej&amp;gt;</password>
   </osoba>
+  <osoba name="frankenstein" statut="zakaznik" zasilat="ne">
+    <email>noChance@here</email>
+    <password>notSoSmart</password>
+  </osoba>
+  <osoba name="jana" statut="zakaznik" zasilat="ne">
+    <email>Liketolive@dangerously</email>
+    <password>notSoSmart</password>
+  </osoba>
+  <osoba name="JmenujuSePepan" statut="zakaznik" zasilat="ne">
+    <email>Liketolive@dangerously</email>
+    <password>notSoSmart</password>
+  </osoba>
+  <osoba name="jindra" zasilat="ne" statut="zamestnanec">
+    <email>jj@no</email>
+    <password>jana</password>
+  </osoba>
 </seznamosob>

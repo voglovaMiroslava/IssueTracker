@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using IssueTracker.Models
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -22,10 +23,29 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Your career", "Career", "Home")</li>
+                    <li>@Html.ActionLink("Projects", "Index", "Projects")</li>
+                    <li>@Html.ActionLink("Issues", "All", "Issues")</li>
+
+                  </ul>
+                <ul class="nav navbar-nav" style="float:right;height:100%;line-height:100%">
+                    @{
+                        LoginManager mana = new LoginManager();
+                        string name = mana.GiveMeLoged(CookieManager.GetCookie("UserCookie"));
+                        if (name == null)
+                        {
+
+                            <li>@Html.ActionLink("Login", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Register", "Register", "Home")</li>
+                        }
+                        else
+                        {
+
+                            <li style="color:#999999;line-height:100%;margin-top:16px;font-size:14pt">@name</li>
+                            <li>@Html.ActionLink("Log Out", "LogOut", "Home")</li>
+                        }
+                    }
                 </ul>
-                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>

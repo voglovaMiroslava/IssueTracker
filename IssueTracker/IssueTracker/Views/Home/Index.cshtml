@@ -1,31 +1,39 @@
-﻿@{
+﻿@using IssueTracker.Models
+@model Person
+@{
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+<table height="700">
+    <tr>
+        <td width="55%">
+            <div class="jumbotron">
+                <h1>Issue Tracker</h1>
+                <p class="lead">Issue Tracker is web application for managing your projects, issues and errors with our employees. <br /> Do you wanna get things done? </p>
+                <p><a href="~/Home/Register" class="btn btn-primary btn-lg">REGISTER HERE &raquo;</a></p>
+            </div>
+        </td>
+        <td style="padding-left:60px">
+            <h1> Login: </h1>
+            <br />
+            @using (@Html.BeginForm())
+            {
+                <h4>Name</h4>
+                @Html.TextBox("Name")
+                if (ViewBag.NameError != null)
+                {
+                    <p style="margin:7px;color:crimson"> @ViewBag.NameError </p>
+                }
+                <h4>Password</h4>
+                @Html.PasswordFor(m => m.Password)
+                if (ViewBag.PassError != null)
+                {
+                    <p style="margin:7px;color:crimson"> @ViewBag.PassError </p>
+                }
+                <p class="jumbotron" style="background-color:white">
+                    <input class="btn btn-primary btn-lg" type="submit" value="Proceed @System.Web.HttpUtility.HtmlDecode("&raquo;")" />
+                </p>
+            }
+        </td>
+    </tr>
+</table>

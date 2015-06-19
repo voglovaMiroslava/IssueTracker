@@ -1,0 +1,95 @@
+﻿@using IssueTracker.Models
+@model Dictionary<Project, dynamic>
+
+@{
+    ViewBag.Title = "Projects";
+}
+
+<h2>Projects review</h2>
+<br />
+<p>
+    @Html.ActionLink("Create New", "CreateProject")
+</p>
+
+@{ LoginManager mana = new LoginManager();
+ string name = mana.GiveMeLoged(CookieManager.GetCookie("UserCookie"));
+ if (name == null)
+ {
+    <h2>You can @Html.ActionLink("Login Here", "Index", "Home").</h2>
+ }
+ else
+ {
+     using (@Html.BeginForm())
+     {
+
+        <table class="table" style="border-top-style:groove;border-top-width:medium">
+            <tr style="border-bottom-color:#808080;border-bottom-style:groove;border-bottom-width:medium;font-size:medium">
+                <th style="min-width:450px">
+                    @Html.DropDownList("ClientFilter", (IEnumerable<SelectListItem>)ViewBag.AllClient, "CLIENT", new { @style = "width:100%" })
+                </th>
+                <th style="min-width:450px">
+                    @Html.DropDownList("NameFilter", (IEnumerable<SelectListItem>)ViewBag.AllNames, "NAME", new { @style = "width:100%" })
+                </th>
+                <th style="max-width:10%"><input type="submit" value="FILTRATE!" class="btn btn-default" /></th>
+            </tr>
+
+            @foreach (var item in Model.Keys)
+            {
+                <tr style="padding-bottom:0px;border-bottom-color:#808080;border-bottom-style:solid;border-bottom-width:medium;font-size:14pt">
+                    <td>
+                        @item.Client
+                    </td>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ID })
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="3" style="padding-top:0px;padding-bottom:0px;border-bottom-color:#808080;border-bottom-style:solid;border-bottom-width:medium">
+                        <table class="table" style="width:1050px;margin-left:50px;border-color:#6f6a6a">
+                            <tr>
+                                <th colspan="7">
+                                    Numeric info about issues
+                                </th>
+
+                            </tr>
+                            <tr>
+                                @{
+                dynamic value = Model[item];
+                Type valueType = value.GetType();
+                <td width="150">
+                    All issues: @valueType.GetProperty("ALL").GetValue(value)
+                </td>
+                                    <td width="150">
+                                        New one: @valueType.GetProperty("NEWONE").GetValue(value)
+                                    </td>
+                                    <td width="150">
+                                        In progress: @valueType.GetProperty("PROGRESSONE").GetValue(value)
+                                    </td>
+                                    <td width="150">
+                                        Solved: @valueType.GetProperty("SOLVED").GetValue(value)
+                                    </td>
+                                    <td width="150">
+                                        Denied: @valueType.GetProperty("DENIED").GetValue(value)
+                                    </td>
+                                    <td width="150">
+                                        Errors: @valueType.GetProperty("ERRORS").GetValue(value)
+                                    </td>
+                                    <td width="150">
+                                        Requests: @valueType.GetProperty("REQ").GetValue(value)
+                                    </td>
+                                }
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+            }
+
+        </table>
+     }
+ }}

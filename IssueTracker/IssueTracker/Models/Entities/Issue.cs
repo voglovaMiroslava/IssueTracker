@@ -21,6 +21,16 @@ namespace IssueTracker.Models
 
         public Issue() { }
 
+        public Issue(string content, string name, string addedBy, int projectID, IssueType type, State state) 
+        {
+            AddedBy = addedBy;
+            Name = name;
+            Content = content;
+            IDproject = projectID;
+            IssueType = type;
+            IssueState = state;
+        }
+
         public override string ToString()
         {
             return String.Format("ID: {2} Name: {0}, Assigned by: {1}", Name, AddedBy, ID);

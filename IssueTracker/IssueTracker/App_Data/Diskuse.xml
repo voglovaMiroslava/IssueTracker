@@ -3,7 +3,7 @@
   <diskuse idpozadavku="1">
     <zaznam poradi="1">
       <diskuter>xtousek</diskuter>
-      <obsah>Tenhle issueTracker je uplne na hovno!</obsah>
+      <obsah>Tenhle issueTracker je vazne dobrej!</obsah>
       <!--YYYY-MM-DDThh:mm:ss-->
       <datum>2015-05-30T09:30:00</datum>
     </zaznam>
@@ -28,6 +28,21 @@
       <obsah>brr</obsah>
       <datum>2015-06-12T03:02:24</datum>
     </zaznam>
+    <zaznam poradi="6">
+      <diskuter>Brumla</diskuter>
+      <obsah>Jen tak si brum brum.</obsah>
+      <datum>2015-06-19T07:34:47</datum>
+    </zaznam>
+    <zaznam poradi="7">
+      <diskuter>Brumla</diskuter>
+      <obsah>Jen tak si brum brum.</obsah>
+      <datum>2015-06-19T07:35:03</datum>
+    </zaznam>
+    <zaznam poradi="8">
+      <diskuter>ertghgfd</diskuter>
+      <obsah>fdff</obsah>
+      <datum>2015-06-19T07:40:42</datum>
+    </zaznam>
   </diskuse>
   <diskuse idpozadavku="6">
     <zaznam poradi="1">
@@ -49,6 +64,37 @@
       <diskuter>&amp;lt;br&amp;gt;&amp;lt;/br&amp;gt;</diskuter>
       <obsah>Šel pes do lesa</obsah>
       <datum>2015-06-12T03:02:24</datum>
+    </zaznam>
+  </diskuse>
+  <diskuse idpozadavku="9">
+    <zaznam poradi="1">
+      <diskuter>Prvn&amp;#237;</diskuter>
+      <obsah>Jooo jsem prvn&amp;#237;</obsah>
+      <datum>2015-06-19T07:37:53</datum>
+    </zaznam>
+    <zaznam poradi="2">
+      <diskuter>Prvn&amp;#237;</diskuter>
+      <obsah>Jooo jsem prvn&amp;#237;</obsah>
+      <datum>2015-06-19T07:38:53</datum>
+    </zaznam>
+  </diskuse>
+  <diskuse idpozadavku="2">
+    <zaznam poradi="1">
+      <diskuter>j&amp;#225;</diskuter>
+      <obsah>NEEEEEEEE</obsah>
+      <datum>2015-06-19T07:43:02</datum>
+    </zaznam>
+    <zaznam poradi="2">
+      <diskuter>j&amp;#225;</diskuter>
+      <obsah>NEEEEEEEE</obsah>
+      <datum>2015-06-19T07:44:05</datum>
+    </zaznam>
+  </diskuse>
+  <diskuse idpozadavku="5">
+    <zaznam poradi="1">
+      <diskuter>Naštvan&amp;#253; klient</diskuter>
+      <obsah>FUNGUJ!</obsah>
+      <datum>2015-06-19T07:46:23</datum>
     </zaznam>
   </diskuse>
 </vsechnydiskuse>

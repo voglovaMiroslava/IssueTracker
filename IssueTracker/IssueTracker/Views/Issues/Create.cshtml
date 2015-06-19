@@ -1,0 +1,56 @@
+﻿@using IssueTracker.Models
+@model Issue
+@{
+    ViewBag.Title = "Create Issue";
+}
+
+<h2>Create Issue</h2>
+<br />
+
+@using (@Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.IssueType, "To Project", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownList("Project", (IEnumerable<SelectListItem>)ViewBag.AllProjects, new { @class = "form-control", @style = "margin:7px" })
+
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name, "Issue name", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @style = "margin:7px" })
+            @if (ViewBag.NotValidName != null)
+            {
+                <p style="margin:7px;color:crimson"> @ViewBag.NotValidName </p>
+            }
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.AddedBy, "Added by:", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.AddedBy, new { @class = "form-control", @style = "margin:7px" })
+            @if (ViewBag.NotValidAdded != null)
+            {
+                <p style="margin:7px;color:crimson"> @ViewBag.NotValidAdded </p>
+            }
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(m => m.IssueType,"Issue type", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownList("Type", (IEnumerable<SelectListItem>)ViewBag.AllTypes, new { @class = "form-control", @style = "margin:7px" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Content, "Description", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.Content, new { @class = "form-control", @style = "margin:7px" })
+
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="SAVE IT!" class="btn btn-default" />
+    </div>
+}

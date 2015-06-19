@@ -1,0 +1,43 @@
+﻿@using IssueTracker.Models
+@model Project
+@{
+    ViewBag.Title = "Create Project";
+}
+
+<h2>Create Project</h2>
+<br />
+
+@using (@Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name, "Project name", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @style = "margin:7px" })
+            @if (ViewBag.NotValidName != null)
+            {
+                <p style="margin:7px;color:crimson"> @ViewBag.NotValidName </p>
+            }
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Client, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownList("Client", (IEnumerable<SelectListItem>)ViewBag.AllClients, "SELECT NAME", new { @class = "form-control", @style = "margin:7px" })
+            @if (ViewBag.NotValidClient != null)
+            {
+                <p style="margin:7px;color:crimson"> @ViewBag.NotValidClient</p>
+            }
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Description, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10" style="height:200px">
+            @Html.TextAreaFor(m => m.Description, new { @class = "form-control", @style = "height:200px;margin:7px" })
+
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="SAVE IT!" class="btn btn-default"/>
+    </div>
+}
